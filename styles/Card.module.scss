@@ -1,0 +1,40 @@
+@import './variadles.scss';
+
+.card {
+	margin: 1rem;
+	padding: 2rem;
+	text-align: left;
+	color: inherit;
+	text-decoration: none;
+	border: 1px solid $white;
+	border-radius: 10px;
+	width: 32rem;
+	height: 38rem;
+	max-width: 320px;
+	cursor: pointer;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 2rem
+}
+
+.img {
+	object-fit: fill;
+}
+
+.info {
+	width: 100%;
+	height: 50%;
+}
+
+.name {
+	font-size: 1.6rem;
+	font-weight: 800;
+}
+
+.info p {
+	font-size: 1.2rem;
+	font-weight: 300;
+}

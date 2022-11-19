@@ -1,12 +1,18 @@
 import Head from 'next/head';
 import Image from 'next/image';
+
 import { getAllCountries } from '../lib/api';
+
+import Card from '../components/Card';
 
 import styles from '../styles/Home.module.scss';
 
 export default function Home({ countries }) {
-  const { name, population, region, capital } = countries[0];
-  console.log('Countryes', name, population, region, capital);
+  // const { name, population, region, capital } = countries[0];
+
+  const firstPageList = countries.slice(0, 8);
+
+  console.log('Countryes', countries.slice(0, 8));
 
   return (
     <div className={styles.container}>
@@ -19,7 +25,22 @@ export default function Home({ countries }) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className={styles.main}>Hello</main>
+      <main className={styles.main}>
+        <div className={styles.grid}>
+          {firstPageList.map(
+            ({ name, population, region, capital, flags }) => (
+              <Card
+                key={name.common}
+                name={name.common}
+                population={population}
+                region={region}
+                capital={capital[0]}
+                flag={flags.svg}
+              />
+            )
+          )}
+        </div>
+      </main>
     </div>
   );
 }
