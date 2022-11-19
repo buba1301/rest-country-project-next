@@ -1,8 +1,12 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import { getAllCountries } from '../lib/api';
+
 import styles from '../styles/Home.module.scss';
 
-export default function Home() {
+export default function Home({ countries }) {
+  console.log('Countryes', countries);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -17,4 +21,16 @@ export default function Home() {
       <main className={styles.main}>Hello</main>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const data = await getAllCountries('all');
+
+  console.log('HOME', data);
+
+  return {
+    props: {
+      countries: data,
+    },
+  };
 }
