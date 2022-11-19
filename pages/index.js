@@ -5,7 +5,8 @@ import { getAllCountries } from '../lib/api';
 import styles from '../styles/Home.module.scss';
 
 export default function Home({ countries }) {
-  console.log('Countryes', countries);
+  const { name, population, region, capital } = countries[0];
+  console.log('Countryes', name, population, region, capital);
 
   return (
     <div className={styles.container}>
