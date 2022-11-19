@@ -14,9 +14,9 @@ export default function Card({
     <div className={s.card} key={name}>
       <Image
         className={s.img}
-        src={flag} // Route of the image file
-        height={159} // Desired size with correct aspect ratio
-        width={280} // Desired size with correct aspect ratio
+        src={flag}
+        height={159}
+        width={280}
         alt='Flag image'
       />
 
