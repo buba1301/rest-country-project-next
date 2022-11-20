@@ -1,0 +1,17 @@
+@import './variadles.scss';
+
+.container {
+	width: 100%;
+	height: 5rem;
+
+}
+
+.input {
+	width: 100%;
+	height: 100%;
+	padding: 9px 4px 9px 40px;
+	border: none;
+	border-radius: 10px;
+	background: $dark-blue;
+	font-size: 1.8rem;
+}

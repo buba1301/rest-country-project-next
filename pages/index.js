@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { getAllCountries } from '../lib/api';
 
 import Card from '../components/Card';
+import Search from '../components/Search';
+import DropDown from '../components/DropDown';
 
 import styles from '../styles/Home.module.scss';
 
@@ -26,7 +28,10 @@ export default function Home({ countries }) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <div className={styles.filters}></div>
+      <div className={styles.filters}>
+        <Search />
+        <DropDown />
+      </div>
       <div className={styles.main}>
         <div className={styles.grid}>
           {firstPageList.map(
