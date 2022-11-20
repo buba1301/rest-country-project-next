@@ -9,6 +9,12 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+h1,
+h2 {
+  padding: 0;
+  margin: 0;
+}
+
 .dark {
   color: $white;
   background: $very-dark-blue-background;

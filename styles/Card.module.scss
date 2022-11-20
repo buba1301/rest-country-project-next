@@ -1,7 +1,6 @@
 @import './variadles.scss';
 
 .card {
-	margin: 1rem;
 	padding: 2rem;
 	background: $dark-blue;
 	text-align: left;
@@ -9,9 +8,8 @@
 	text-decoration: none;
 	box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 	border-radius: 10px;
-	width: 32rem;
 	height: 38rem;
-	max-width: 320px;
+	min-width: 30rem;
 	transform: translateY(-5);
 	transition: transform 0.5s ease-out;
 	cursor: pointer;

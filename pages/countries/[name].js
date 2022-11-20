@@ -1,7 +1,14 @@
-export default function Country() {}
+import Detail from '../../components/Detail';
+import { getAllCountriesName, getCountryData } from '../../lib/api';
+
+export default function Country({ countryData }) {
+  console.log('COuntryData', countryData);
+
+  return <Detail countryData={countryData} />;
+}
 
 export async function getStaticPaths() {
-  const paths = getAllCountriesNames({
+  const paths = await getAllCountriesName({
     query: 'all',
     params: 'name',
   });
@@ -9,5 +16,15 @@ export async function getStaticPaths() {
   return {
     paths,
     fallback: false,
+  };
+}
+
+export async function getStaticProps({ params }) {
+  const [countryData] = await getCountryData(params.name);
+
+  return {
+    props: {
+      countryData,
+    },
   };
 }

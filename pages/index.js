@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import Image from 'next/image';
 
 import { getAllCountries } from '../lib/api';
@@ -15,7 +16,7 @@ export default function Home({ countries }) {
   console.log('Countryes', countries.slice(0, 8));
 
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <title>REST Countries</title>
         <meta
@@ -25,23 +26,29 @@ export default function Home({ countries }) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className={styles.main}>
+      <div className={styles.filters}></div>
+      <div className={styles.main}>
         <div className={styles.grid}>
           {firstPageList.map(
             ({ name, population, region, capital, flags }) => (
-              <Card
+              <Link
+                href={`/countries/${name.common}`}
                 key={name.common}
-                name={name.common}
-                population={population}
-                region={region}
-                capital={capital[0]}
-                flag={flags.svg}
-              />
+                className={styles.link}
+              >
+                <Card
+                  name={name.common}
+                  population={population}
+                  region={region}
+                  capital={capital[0]}
+                  flag={flags.svg}
+                />
+              </Link>
             )
           )}
         </div>
-      </main>
-    </div>
+      </div>
+    </>
   );
 }
 

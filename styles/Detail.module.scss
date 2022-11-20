@@ -1,0 +1,69 @@
+.container {
+	width: 100%;
+	height: 100%;
+
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 10rem 1fr;
+	grid-gap: 2rem 5rem;
+	justify-items: center;
+}
+
+.backButtonWrap {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.flagWrap {
+	height: 100%;
+	grid-area: 2 / 1 / 3 / 2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.img {
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+}
+
+.name {
+	font-size: 3rem;
+	font-weight: bold;
+}
+
+.infoWrap {
+	width: 100%;
+	height: 100%;
+	grid-area: 2 / 2 / 3 / 3;
+
+	display: grid;
+	grid-template-rows: 5rem 1fr 5rem
+}
+
+.info {
+	font-size: 1.2rem;
+	font-weight: 300;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+.borders {
+	font-size: 1.2rem;
+	font-weight: 300;
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 1rem
+}
+
+.button {
+	width: 5rem;
+	font-size: inherit;
+	cursor: pointer;
+}
