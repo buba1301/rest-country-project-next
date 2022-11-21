@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import cn from 'classnames';
 import { Listbox } from '@headlessui/react';
 import {
   CheckIcon,
@@ -7,19 +8,28 @@ import {
 
 import s from '../styles/DropDown.module.scss';
 
-const regions = ['Africa', 'Americe', 'Asia', 'Europ', 'Oceania'];
+const regions = [
+  'Africa',
+  'Americe',
+  'Asia',
+  'Europ',
+  'Oceania',
+  'All',
+];
 
 export default function DropDown() {
-  const [selectedPerson, setSelectedPerson] = useState('');
+  const [selectedCountry, setSelectedCountry] = useState('All');
+
+  console.log('!!!', selectedCountry);
 
   return (
     <div className={s.listbox}>
-      <Listbox value={selectedPerson} onChange={setSelectedPerson}>
+      <Listbox value={selectedCountry} onChange={setSelectedCountry}>
         <Listbox.Button className={s.listboxButton}>
           <span>
-            {selectedPerson === ''
+            {selectedCountry === 'All'
               ? 'Filter By Region'
-              : selectedPerson}
+              : selectedCountry}
           </span>
           <span>
             <ChevronDownIcon />
@@ -33,7 +43,15 @@ export default function DropDown() {
               value={region}
               // disabled={region}
             >
-              {region}
+              {selectedCountry === region &&
+              selectedCountry !== 'All' ? (
+                <span>
+                  <CheckIcon />
+                </span>
+              ) : (
+                <span></span>
+              )}
+              <span className={s.regionName}>{region}</span>
             </Listbox.Option>
           ))}
         </Listbox.Options>
