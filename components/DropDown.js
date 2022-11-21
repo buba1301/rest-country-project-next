@@ -23,8 +23,12 @@ export default function DropDown() {
   console.log('!!!', selectedCountry);
 
   return (
-    <div className={s.listbox}>
-      <Listbox value={selectedCountry} onChange={setSelectedCountry}>
+    <form className={s.listbox} action=''>
+      <Listbox
+        value={selectedCountry}
+        onChange={setSelectedCountry}
+        name='filter'
+      >
         <Listbox.Button className={s.listboxButton}>
           <span>
             {selectedCountry === 'All'
@@ -56,6 +60,6 @@ export default function DropDown() {
           ))}
         </Listbox.Options>
       </Listbox>
-    </div>
+    </form>
   );
 }
