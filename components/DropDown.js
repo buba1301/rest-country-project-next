@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import cn from 'classnames';
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { Listbox } from '@headlessui/react';
 import {
   CheckIcon,
@@ -10,30 +10,38 @@ import s from '../styles/DropDown.module.scss';
 
 const regions = [
   'Africa',
-  'Americe',
+  'Americas',
   'Asia',
-  'Europ',
+  'Europe',
   'Oceania',
   'All',
 ];
 
-export default function DropDown() {
-  const [selectedCountry, setSelectedCountry] = useState('All');
+export default function DropDown({ dispatch }) {
+  const [selectedRegion, setSelectedRegion] = useState('');
 
-  console.log('!!!', selectedCountry);
+  const handleChange = (value) => {
+    console.log('DropDown: ', value);
+
+    setSelectedRegion(value !== 'all' ? value : '');
+  };
+
+  useEffect(() => {
+    dispatch({ type: 'FILTER', value: selectedRegion });
+  }, [selectedRegion]);
 
   return (
-    <form className={s.listbox} action=''>
+    <div className={s.listbox}>
       <Listbox
-        value={selectedCountry}
-        onChange={setSelectedCountry}
+        value={selectedRegion}
+        onChange={handleChange}
         name='filter'
       >
         <Listbox.Button className={s.listboxButton}>
           <span>
-            {selectedCountry === 'All'
+            {selectedRegion === ''
               ? 'Filter By Region'
-              : selectedCountry}
+              : selectedRegion}
           </span>
           <span>
             <ChevronDownIcon />
@@ -47,19 +55,20 @@ export default function DropDown() {
               value={region}
               // disabled={region}
             >
-              {selectedCountry === region &&
-              selectedCountry !== 'All' ? (
+              {selectedRegion === region &&
+              selectedRegion !== 'All' ? (
                 <span>
                   <CheckIcon />
                 </span>
               ) : (
                 <span></span>
               )}
+
               <span className={s.regionName}>{region}</span>
             </Listbox.Option>
           ))}
         </Listbox.Options>
       </Listbox>
-    </form>
+    </div>
   );
 }
