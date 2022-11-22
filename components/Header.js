@@ -30,7 +30,7 @@ export default function Header() {
     <div className={s.container}>
       <h1 className={s.header}>Where in the world?</h1>
       <button className={s.button} onClick={handleClick}>
-        Dark Mode
+        {theme === 'dark' ? 'Light mode' : 'Dark mode'}
       </button>
     </div>
   );
