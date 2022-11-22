@@ -12,6 +12,11 @@
 	padding: 9px 4px 9px 40px;
 	border: none;
 	border-radius: 10px;
-	background: $dark-blue;
+	box-shadow: 3px 3px 10px 3px rgba(34, 60, 80, 0.2);
+	@include variable(backgroundElements, background, black);
 	font-size: 1.8rem;
+}
+
+.input::placeholder {
+	@include variable(color, color, white);
 }
