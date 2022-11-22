@@ -25,3 +25,9 @@
 	cursor: pointer;
 	@include variable(backgroundElements, background, black);
 }
+
+@media (max-width: 820px) {
+	.container {
+		padding: 0 2rem;
+	}
+}

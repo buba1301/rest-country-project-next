@@ -62,3 +62,9 @@
 .option:hover {
 	background: $dark-gray;
 }
+
+@media (max-width: 680px) {
+	.listbox {
+		justify-self: start;
+	}
+}

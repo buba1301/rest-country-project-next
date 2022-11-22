@@ -31,23 +31,6 @@ h2 {
   margin: 0;
 }
 
-/* .dark {
-  @include variable(color, color, $white);
-  @include variable(background, background,
-    $very-dark-blue-background);
-  @include variable(backgroundCard, background, $dark-blue);
-  color: $white;
-  background: $very-dark-blue-background;
-}
-
-.light {
-  @include variable(color, color, $very-dark-blue-color);
-  @include variable(background, background, $very-light-gray);
-  @include variable(backgroundCard, background, $white);
-  color: $very-dark-blue-color;
-  background: $very-light-gray;
-}*/
-
 a {
   color: inherit;
   text-decoration: none;
