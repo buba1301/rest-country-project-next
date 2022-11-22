@@ -9,7 +9,7 @@ module.exports = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'flagcdn.com',
+        hostname: '**',
         port: '',
         pathname: '**',
       },

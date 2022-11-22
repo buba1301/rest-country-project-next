@@ -32,7 +32,7 @@ export default function Main({ countries }) {
       : country.region === query;
   });
 
-  console.log('COuntries', filteredData);
+  console.log('Countries', filteredData);
 
   const firstPageList = filteredData.slice(0, 8);
 

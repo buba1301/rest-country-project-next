@@ -1,4 +1,6 @@
 import React from 'react';
+import Link from 'next/link';
+import { ArrowLeftIcon } from '@heroicons/react/20/solid';
 import Image from 'next/image';
 
 import s from '../styles/Detail.module.scss';
@@ -16,22 +18,27 @@ export default function Detail({ countryData }) {
     languages,
   } = countryData;
 
-  const infoList = [
-    population,
-    region,
-    subregion,
-    capital[0],
-    Object.keys(currencies)[0],
-  ];
+  const infoList = {
+    Population: population,
+    Region: region,
+    Subregion: subregion,
+    Capital: capital[0],
+    Currencies: Object.keys(currencies)[0],
+  };
 
   return (
     <div className={s.container}>
-      <div className={s.backButtonWrap}></div>
+      <div className={s.backButtonWrap}>
+        <Link href='/' className={s.backBtn}>
+          <ArrowLeftIcon />
+          Back
+        </Link>
+      </div>
       <div className={s.flagWrap}>
         <Image
           className={s.img}
           src={flags.svg}
-          width='400'
+          width='320'
           height='230'
           alt='Flag image'
         />
@@ -39,17 +46,22 @@ export default function Detail({ countryData }) {
       <div className={s.infoWrap}>
         <h1 className={s.name}>{name.common}</h1>
         <div className={s.info}>
-          {infoList.map((value, index) => (
-            <p key={index}>{value}</p>
+          {Object.entries(infoList).map(([key, value], index) => (
+            <>
+              <span key={key}>
+                <strong>{`${key}: `}</strong>
+                {value}
+              </span>
+            </>
           ))}
         </div>
         <div className={s.borders}>
-          Border countryes:
+          <strong>Border countries: </strong>
           {borders
             ? borders.map((border) => (
-                <button className={s.button} key={border}>
+                <Link href='' className={s.button} key={border}>
                   {border}
-                </button>
+                </Link>
               ))
             : ' No'}
         </div>

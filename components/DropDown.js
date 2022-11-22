@@ -23,7 +23,7 @@ export default function DropDown({ dispatch }) {
   const handleChange = (value) => {
     console.log('DropDown: ', value);
 
-    setSelectedRegion(value !== 'all' ? value : '');
+    setSelectedRegion(value !== 'All' ? value : '');
   };
 
   useEffect(() => {

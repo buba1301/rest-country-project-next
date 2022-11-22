@@ -2,8 +2,6 @@ import Detail from '../../components/Detail';
 import { getAllCountriesName, getCountryData } from '../../lib/api';
 
 export default function Country({ countryData }) {
-  console.log('COuntryData', countryData);
-
   return <Detail countryData={countryData} />;
 }
 
