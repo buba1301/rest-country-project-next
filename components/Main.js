@@ -32,8 +32,6 @@ export default function Main({ countries }) {
       : country.region === query;
   });
 
-  console.log('Countries', filteredData);
-
   const firstPageList = filteredData.slice(0, 8);
 
   return (
@@ -45,9 +43,9 @@ export default function Main({ countries }) {
       <div className={styles.main}>
         <div className={styles.grid}>
           {firstPageList.map(
-            ({ name, population, region, capital, flags }) => (
+            ({ name, population, region, capital, flags, cca3 }) => (
               <Link
-                href={`/countries/${name.common}`}
+                href={`/countries/${cca3.toLowerCase()}`}
                 key={name.common}
                 className={styles.link}
               >

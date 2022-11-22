@@ -6,8 +6,6 @@ export default function Search({ dispatch }) {
   const [value, setValue] = useState('');
   const [pending, startTransition] = useTransition();
 
-  console.log('SEARCH', pending);
-
   const handleChange = (e) => {
     const { value } = e.target;
     setValue(value.toLowerCase());

@@ -53,7 +53,6 @@ export default function DropDown({ dispatch }) {
               key={region}
               className={s.option}
               value={region}
-              // disabled={region}
             >
               {selectedRegion === region &&
               selectedRegion !== 'All' ? (

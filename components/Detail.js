@@ -6,6 +6,7 @@ import Image from 'next/image';
 import s from '../styles/Detail.module.scss';
 
 export default function Detail({ countryData }) {
+  console.log();
   const {
     flags,
     borders,
@@ -59,7 +60,11 @@ export default function Detail({ countryData }) {
           <strong>Border countries: </strong>
           {borders
             ? borders.map((border) => (
-                <Link href='' className={s.button} key={border}>
+                <Link
+                  href={`/countries/${border.toLowerCase()}`}
+                  className={s.button}
+                  key={border}
+                >
                   {border}
                 </Link>
               ))

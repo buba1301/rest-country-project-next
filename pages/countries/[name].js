@@ -1,5 +1,9 @@
 import Detail from '../../components/Detail';
-import { getAllCountriesName, getCountryData } from '../../lib/api';
+import {
+  getAllCountriesName,
+  getCountryData,
+  getCountryByCode,
+} from '../../lib/api';
 
 export default function Country({ countryData }) {
   return <Detail countryData={countryData} />;
@@ -18,7 +22,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const [countryData] = await getCountryData(params.name);
+  const [countryData] = await getCountryByCode(params.name);
 
   return {
     props: {
