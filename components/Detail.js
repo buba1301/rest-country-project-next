@@ -6,8 +6,8 @@ import Image from 'next/image';
 import s from '../styles/Detail.module.scss';
 
 export default function Detail({ countryData }) {
+  console.log('Detail', countryData.flags);
   const {
-    flags,
     borders,
     name,
     population,
@@ -39,7 +39,7 @@ export default function Detail({ countryData }) {
       <div className={s.flagWrap}>
         <Image
           className={s.img}
-          src={flags.svg}
+          src={countryData?.flags.svg}
           width='320'
           height='230'
           alt='Flag image'

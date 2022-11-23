@@ -22,7 +22,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  console.log('PATHS', params);
   const [countryData] = await getCountryByCode(params?.name);
 
   return {
