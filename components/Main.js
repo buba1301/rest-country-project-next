@@ -9,7 +9,6 @@ import styles from '../styles/Main.module.scss';
 const initialState = { query: '', type: '' };
 
 const reducer = (state, action) => {
-  console.log('Action', action);
   switch (action.type) {
     case 'SEARCH':
       return { ...state, query: action.value, type: 'search' };

@@ -6,7 +6,6 @@ import Image from 'next/image';
 import s from '../styles/Detail.module.scss';
 
 export default function Detail({ countryData }) {
-  console.log();
   const {
     flags,
     borders,

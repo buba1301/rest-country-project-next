@@ -21,8 +21,6 @@ export default function DropDown({ dispatch }) {
   const [selectedRegion, setSelectedRegion] = useState('');
 
   const handleChange = (value) => {
-    console.log('DropDown: ', value);
-
     setSelectedRegion(value !== 'All' ? value : '');
   };
 

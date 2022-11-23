@@ -15,9 +15,11 @@ export async function getStaticPaths() {
     params: 'name',
   });
 
+  console.log('PATHS', paths);
+
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }
 
