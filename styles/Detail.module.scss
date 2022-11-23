@@ -9,15 +9,16 @@
 	grid-template-rows: 10rem 1fr 1fr;
 	grid-gap: 2rem 5rem;
 	justify-items: center;
+	align-items: center;
 }
 
 .backButtonWrap {
-	width: 100%;
+	width: 320px;
 	height: 100%;
-	padding-left: 180px;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
+	justify-self: center;
 }
 
 .backBtn {
@@ -44,6 +45,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	justify-self: center;
 }
 
 .img {
@@ -75,10 +77,12 @@
 }
 
 .borders {
+	width: auto;
+	max-width: 40rem;
 	font-size: 1.2rem;
 	font-weight: 300;
-	width: 100%;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: flex-start;
 	align-items: center;
 	gap: 1rem

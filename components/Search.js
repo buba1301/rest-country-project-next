@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useTransition } from 'react';
+import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 
 import s from '../styles/Search.module.scss';
 
@@ -23,6 +24,7 @@ export default function Search({ dispatch }) {
         value={value}
         onChange={handleChange}
       />
+      <MagnifyingGlassIcon className={s.icon} />
     </form>
   );
 }
