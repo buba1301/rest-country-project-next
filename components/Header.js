@@ -31,7 +31,9 @@ export default function Header() {
       <h1 className={s.header}>Where in the world?</h1>
 
       <button className={s.button} onClick={handleClick}>
-        <MoonIcon />
+        <div className={s.icon}>
+          <MoonIcon />
+        </div>
 
         {theme === 'dark' ? 'Light mode' : 'Dark mode'}
       </button>
