@@ -7,24 +7,16 @@ import s from '../styles/Detail.module.scss';
 
 export default function Detail({ countryData }) {
   console.log('Detail', countryData?.flags.svg);
-  const {
-    borders,
-    name,
-    population,
-    region,
-    subregion,
-    capital,
-    currencies,
-    languages,
-  } = countryData;
 
   const infoList = {
-    Population: population,
-    Region: region,
-    Subregion: subregion,
-    Capital: capital ? capital[0] : 'no capital',
-    Currencies: currencies
-      ? Object.keys(currencies)[0]
+    Population: countryData?.population,
+    Region: countryData?.region,
+    Subregion: countryData?.subregion,
+    Capital: countryData?.capital
+      ? countryData?.capital[0]
+      : 'no capital',
+    Currencies: countryData?.currencies
+      ? Object.keys(countryData?.currencies)[0]
       : 'no capital',
   };
 
@@ -46,7 +38,7 @@ export default function Detail({ countryData }) {
         />
       </div>
       <div className={s.infoWrap}>
-        <h1 className={s.name}>{name.common}</h1>
+        <h1 className={s.name}>{countryData?.name.common}</h1>
         <div className={s.info}>
           {Object.entries(infoList).map(([key, value], index) => (
             <>
@@ -59,8 +51,8 @@ export default function Detail({ countryData }) {
         </div>
         <div className={s.borders}>
           <strong>Border countries: </strong>
-          {borders
-            ? borders.map((border) => (
+          {countryData?.borders
+            ? countryData?.borders.map((border) => (
                 <Link
                   href={`/countries/${border.toLowerCase()}`}
                   className={s.button}
