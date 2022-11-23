@@ -52,7 +52,7 @@ export default function Main({ countries }) {
                   name={name.common}
                   population={population}
                   region={region}
-                  capital={capital[0]}
+                  capital={capital ? capital[0] : 'no capital'}
                   flag={flags.svg}
                 />
               </Link>

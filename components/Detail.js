@@ -22,8 +22,10 @@ export default function Detail({ countryData }) {
     Population: population,
     Region: region,
     Subregion: subregion,
-    Capital: capital[0],
-    Currencies: Object.keys(currencies)[0],
+    Capital: capital ? capital[0] : 'no capital',
+    Currencies: currencies
+      ? Object.keys(currencies)[0]
+      : 'no capital',
   };
 
   return (

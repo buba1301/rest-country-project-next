@@ -15,8 +15,6 @@ export async function getStaticPaths() {
     params: 'name',
   });
 
-  console.log('PATHS', paths);
-
   return {
     paths,
     fallback: true,
@@ -24,7 +22,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const [countryData] = await getCountryByCode(params.name);
+  console.log('PATHS', params);
+  const [countryData] = await getCountryByCode(params?.name);
 
   return {
     props: {
