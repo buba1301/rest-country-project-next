@@ -22,7 +22,10 @@ const reducer = (state, action) => {
 export default function Main({ countries }) {
   const [searchValue, setSearchValue] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('');
+  const [limit, setLimit] = useState(8);
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  console.log('searchValue', countries.lenght);
 
   const { query, type } = state;
 
@@ -35,7 +38,11 @@ export default function Main({ countries }) {
       : country.region === query;
   });
 
-  const firstPageList = filteredData.slice(0, 8);
+  const firstPageList = filteredData.slice(0, limit);
+
+  const handleClick = () => {
+    setLimit((prevState) => prevState + 8);
+  };
 
   return (
     <>
@@ -46,16 +53,12 @@ export default function Main({ countries }) {
             setSearchValue,
             setSelectedRegion,
             selectedRegion,
+            setLimit,
             dispatch,
           }}
         >
           <Search />
-          <DropDown
-            setSearchValue={setSearchValue}
-            selectedRegion={selectedRegion}
-            setSelectedRegion={setSelectedRegion}
-            dispatch={dispatch}
-          />
+          <DropDown />
         </SearchAndFiltersContext.Provider>
       </div>
       <div className={styles.main}>
@@ -79,6 +82,14 @@ export default function Main({ countries }) {
           )}
         </div>
       </div>
+      <button
+        type='button'
+        onClick={handleClick}
+        disabled={searchValue !== ''}
+        className={styles.moreCountries}
+      >
+        More countries...
+      </button>
     </>
   );
 }

@@ -25,12 +25,14 @@ export default function DropDown() {
     setSearchValue,
     setSelectedRegion,
     selectedRegion,
+    setLimit,
     dispatch,
   } = useContext(SearchAndFiltersContext);
 
   const handleChange = (value) => {
     setSelectedRegion(value !== 'All' ? value : '');
     setSearchValue('');
+    value === 'All' && setLimit(8);
   };
 
   useEffect(() => {

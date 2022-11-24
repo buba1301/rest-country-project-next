@@ -12,7 +12,6 @@ export default function Search() {
   const handleChange = (e) => {
     const { value } = e.target;
     setSearchValue(value.toLowerCase());
-
     setSelectedRegion('');
     dispatch({ type: 'SEARCH', value });
   };
