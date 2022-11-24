@@ -4,12 +4,13 @@ import { ArrowLeftIcon } from '@heroicons/react/20/solid';
 import Image from 'next/image';
 
 import s from '../styles/Detail.module.scss';
+import numberWithCommas from '../utils';
 
 export default function Detail({ countryData }) {
-  console.log('Detail', countryData?.flags.svg);
+  console.log('Detail', typeof countryData?.population);
 
   const infoList = {
-    Population: countryData?.population,
+    Population: numberWithCommas(countryData?.population),
     Region: countryData?.region,
     Subregion: countryData?.subregion,
     Capital: countryData?.capital
@@ -50,7 +51,7 @@ export default function Detail({ countryData }) {
           ))}
         </div>
         <div className={s.borders}>
-          <strong>Border countries: </strong>
+          <strong>{`Border countries:  `}</strong>
           {countryData?.borders
             ? countryData?.borders.map((border) => (
                 <Link

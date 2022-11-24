@@ -5,6 +5,7 @@ import Search from '../components/Search';
 import DropDown from '../components/DropDown';
 
 import styles from '../styles/Main.module.scss';
+import numberWithCommas from '../utils';
 
 export const SearchAndFiltersContext = React.createContext();
 
@@ -72,7 +73,7 @@ export default function Main({ countries }) {
               >
                 <Card
                   name={name.common}
-                  population={population}
+                  population={numberWithCommas(population)}
                   region={region}
                   capital={capital ? capital[0] : 'no capital'}
                   flag={flags.svg}
