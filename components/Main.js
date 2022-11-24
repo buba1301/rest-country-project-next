@@ -18,6 +18,8 @@ const reducer = (state, action) => {
 };
 
 export default function Main({ countries }) {
+  const [searchValue, setSearchValue] = useState('');
+  const [selectedRegion, setSelectedRegion] = useState('');
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const { query, type } = state;
@@ -36,8 +38,18 @@ export default function Main({ countries }) {
   return (
     <>
       <div className={styles.filters}>
-        <Search query={query} dispatch={dispatch} />
-        <DropDown query={query} dispatch={dispatch} />
+        <Search
+          value={searchValue}
+          setValue={setSearchValue}
+          setSelectedRegion={setSelectedRegion}
+          dispatch={dispatch}
+        />
+        <DropDown
+          setSearchValue={setSearchValue}
+          selectedRegion={selectedRegion}
+          setSelectedRegion={setSelectedRegion}
+          dispatch={dispatch}
+        />
       </div>
       <div className={styles.main}>
         <div className={styles.grid}>

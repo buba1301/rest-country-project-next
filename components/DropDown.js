@@ -17,11 +17,15 @@ const regions = [
   'All',
 ];
 
-export default function DropDown({ dispatch }) {
-  const [selectedRegion, setSelectedRegion] = useState('');
-
+export default function DropDown({
+  setSearchValue,
+  selectedRegion,
+  setSelectedRegion,
+  dispatch,
+}) {
   const handleChange = (value) => {
     setSelectedRegion(value !== 'All' ? value : '');
+    setSearchValue('');
   };
 
   useEffect(() => {

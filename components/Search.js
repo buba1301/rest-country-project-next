@@ -1,18 +1,20 @@
-import React, { useEffect, useState, useTransition } from 'react';
+import React, { useEffect } from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 
 import s from '../styles/Search.module.scss';
 
-export default function Search({ dispatch }) {
-  const [value, setValue] = useState('');
-  const [pending, startTransition] = useTransition();
-
+export default function Search({
+  value,
+  setValue,
+  setSelectedRegion,
+  dispatch,
+}) {
   const handleChange = (e) => {
     const { value } = e.target;
     setValue(value.toLowerCase());
-    startTransition(() => {
-      dispatch({ type: 'SEARCH', value });
-    });
+
+    setSelectedRegion('');
+    dispatch({ type: 'SEARCH', value });
   };
 
   return (
@@ -28,3 +30,27 @@ export default function Search({ dispatch }) {
     </form>
   );
 }
+
+/* error
+
+import { useEffect } from 'react';
+
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error;
+  reset: () => void;
+}) {
+  useEffect(() => {
+    // Log the error to an error reporting service
+    console.error(error);
+  }, [error]);
+
+  return (
+    <div>
+      <p>Something went wrong!</p>
+      <button onClick={() => reset()}>Reset error boundary</button>
+    </div>
+  );
+} */

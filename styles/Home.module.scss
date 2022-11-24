@@ -1,5 +1,5 @@
 .container {
-  padding: 0 2rem;
+  padding: 0 clamp(2rem, 6vw, 6rem);
   display: flex;
   flex-direction: column;
 }
