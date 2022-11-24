@@ -6,6 +6,8 @@ import DropDown from '../components/DropDown';
 
 import styles from '../styles/Main.module.scss';
 
+export const SearchAndFiltersContext = React.createContext();
+
 const initialState = { query: '', type: '' };
 
 const reducer = (state, action) => {
@@ -38,18 +40,23 @@ export default function Main({ countries }) {
   return (
     <>
       <div className={styles.filters}>
-        <Search
-          value={searchValue}
-          setValue={setSearchValue}
-          setSelectedRegion={setSelectedRegion}
-          dispatch={dispatch}
-        />
-        <DropDown
-          setSearchValue={setSearchValue}
-          selectedRegion={selectedRegion}
-          setSelectedRegion={setSelectedRegion}
-          dispatch={dispatch}
-        />
+        <SearchAndFiltersContext.Provider
+          value={{
+            searchValue,
+            setSearchValue,
+            setSelectedRegion,
+            selectedRegion,
+            dispatch,
+          }}
+        >
+          <Search />
+          <DropDown
+            setSearchValue={setSearchValue}
+            selectedRegion={selectedRegion}
+            setSelectedRegion={setSelectedRegion}
+            dispatch={dispatch}
+          />
+        </SearchAndFiltersContext.Provider>
       </div>
       <div className={styles.main}>
         <div className={styles.grid}>

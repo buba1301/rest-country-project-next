@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Listbox } from '@headlessui/react';
+
 import {
   CheckIcon,
   ChevronDownIcon,
 } from '@heroicons/react/20/solid';
+
+import { SearchAndFiltersContext } from './Main';
 
 import s from '../styles/DropDown.module.scss';
 
@@ -17,12 +20,14 @@ const regions = [
   'All',
 ];
 
-export default function DropDown({
-  setSearchValue,
-  selectedRegion,
-  setSelectedRegion,
-  dispatch,
-}) {
+export default function DropDown() {
+  const {
+    setSearchValue,
+    setSelectedRegion,
+    selectedRegion,
+    dispatch,
+  } = useContext(SearchAndFiltersContext);
+
   const handleChange = (value) => {
     setSelectedRegion(value !== 'All' ? value : '');
     setSearchValue('');
