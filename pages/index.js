@@ -1,12 +1,8 @@
 import Head from 'next/head';
-import Link from 'next/link';
-import Image from 'next/image';
 
 import { getAllCountries } from '../lib/api';
 
 import Main from '../components/Main';
-
-import styles from '../styles/Home.module.scss';
 
 export default function Home({ countries }) {
   return (
