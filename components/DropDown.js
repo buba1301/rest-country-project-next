@@ -19,7 +19,7 @@ export default function DropDown({
     <div className={s.listbox}>
       <Listbox value={selectedValue} onChange={onChange}>
         <Listbox.Button className={s.listboxButton}>
-          <span>{!selectedValue ? name : selectedValue}</span>
+          <span>{name}</span>
           <span>
             <ChevronDownIcon />
           </span>

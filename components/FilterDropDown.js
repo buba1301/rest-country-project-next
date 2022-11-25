@@ -12,7 +12,7 @@ const regions = [
 ];
 
 export default function FilterDropDown() {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState('All');
 
   const { setSearchValue, setLimit, dispatch, type } = useContext(
     SearchAndFiltersContext
@@ -32,7 +32,7 @@ export default function FilterDropDown() {
   return (
     <DropDown
       values={regions}
-      name='Filtres By Region'
+      name={value === 'All' ? 'Filter By Region' : value}
       selectedValue={value}
       onChange={handleChange}
     />

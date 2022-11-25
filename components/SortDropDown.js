@@ -5,7 +5,7 @@ import { SearchAndFiltersContext } from './Main';
 const sortTypes = ['Name', 'Population', 'Reset'];
 
 export default function SortDropDown() {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState('Reset');
 
   const { setSearchValue, setLimit, dispatch, type } = useContext(
     SearchAndFiltersContext
@@ -28,7 +28,7 @@ export default function SortDropDown() {
   return (
     <DropDown
       values={sortTypes}
-      name='Sort'
+      name={value === 'Reset' ? 'Sort' : value}
       selectedValue={value}
       onChange={handleChange}
     />
