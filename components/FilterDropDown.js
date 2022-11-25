@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import DropDown from './DropDown';
 import { SearchAndFiltersContext } from './Main';
 
@@ -14,9 +14,13 @@ const regions = [
 export default function FilterDropDown() {
   const [value, setValue] = useState('');
 
-  const { setSearchValue, setLimit, dispatch } = useContext(
+  const { setSearchValue, setLimit, dispatch, type } = useContext(
     SearchAndFiltersContext
   );
+
+  useEffect(() => {
+    type === 'search' && setValue('');
+  }, [type]);
 
   const handleChange = (value) => {
     setValue(value);

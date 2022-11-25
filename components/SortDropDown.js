@@ -1,19 +1,26 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import DropDown from './DropDown';
 import { SearchAndFiltersContext } from './Main';
 
-const sortTypes = ['ByName', 'ByPopulation', 'Reset'];
+const sortTypes = ['Name', 'Population', 'Reset'];
 
 export default function SortDropDown() {
   const [value, setValue] = useState('');
 
-  const { setSearchValue, setLimit, dispatch } = useContext(
+  const { setSearchValue, setLimit, dispatch, type } = useContext(
     SearchAndFiltersContext
   );
 
+  useEffect(() => {
+    type === 'search' && setValue('');
+  }, [type]);
+
   const handleChange = (value) => {
     setValue(value);
-    dispatch({ type: 'SORT', value: value === 'Reset' ? '' : value });
+    dispatch({
+      type: 'SORT',
+      value: value === 'Reset' ? '' : value.toLowerCase(),
+    });
     setSearchValue('');
     value === 'Reset' && setLimit(8);
   };

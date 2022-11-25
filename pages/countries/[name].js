@@ -1,9 +1,5 @@
 import Detail from '../../components/Detail';
-import {
-  getAllCountriesName,
-  getCountryData,
-  getCountryByCode,
-} from '../../lib/api';
+import { getAllCountriesName, getCountryByCode } from '../../lib/api';
 
 export default function Country({ countryData }) {
   return <Detail countryData={countryData} />;

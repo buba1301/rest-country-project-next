@@ -1,14 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect, useState } from 'react';
-import Link from 'next/link';
+import React from 'react';
 import { Listbox } from '@headlessui/react';
 
 import {
   CheckIcon,
   ChevronDownIcon,
 } from '@heroicons/react/20/solid';
-
-import { SearchAndFiltersContext } from './Main';
 
 import s from '../styles/DropDown.module.scss';
 

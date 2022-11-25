@@ -27,7 +27,6 @@ const reducer = (state, action) => {
 
 export default function Main({ countries }) {
   const [searchValue, setSearchValue] = useState('');
-  const [selectedValue, setSelectedValue] = useState('');
   const [limit, setLimit] = useState(8);
 
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -52,11 +51,9 @@ export default function Main({ countries }) {
           value={{
             searchValue,
             setSearchValue,
-            setSelectedValue,
-            selectedValue,
             setLimit,
             dispatch,
-            query,
+            type,
           }}
         >
           <Search />
@@ -90,7 +87,7 @@ export default function Main({ countries }) {
       <button
         type='button'
         onClick={handleClick}
-        // disabled={searchValue !== ''}
+        disabled={searchValue !== ''}
         className={styles.moreCountries}
       >
         More countries...

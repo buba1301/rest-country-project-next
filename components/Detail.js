@@ -41,7 +41,7 @@ export default function Detail({ countryData }) {
       <div className={s.infoWrap}>
         <h1 className={s.name}>{countryData?.name.common}</h1>
         <div className={s.info}>
-          {Object.entries(infoList).map(([key, value], index) => (
+          {Object.entries(infoList).map(([key, value]) => (
             <>
               <span key={key}>
                 <strong>{`${key}: `}</strong>
