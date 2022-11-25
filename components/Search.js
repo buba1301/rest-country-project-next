@@ -6,13 +6,13 @@ import { SearchAndFiltersContext } from './Main';
 import s from '../styles/Search.module.scss';
 
 export default function Search() {
-  const { searchValue, setSearchValue, setSelectedRegion, dispatch } =
+  const { searchValue, setSearchValue, setSelectedValue, dispatch } =
     useContext(SearchAndFiltersContext);
 
   const handleChange = (e) => {
     const { value } = e.target;
     setSearchValue(value.toLowerCase());
-    setSelectedRegion('');
+    setSelectedValue('');
     dispatch({ type: 'SEARCH', value });
   };
 

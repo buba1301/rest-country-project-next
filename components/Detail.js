@@ -4,7 +4,7 @@ import { ArrowLeftIcon } from '@heroicons/react/20/solid';
 import Image from 'next/image';
 
 import s from '../styles/Detail.module.scss';
-import numberWithCommas from '../utils';
+import { numberWithCommas } from '../utils';
 
 export default function Detail({ countryData }) {
   console.log('Detail', typeof countryData?.population);

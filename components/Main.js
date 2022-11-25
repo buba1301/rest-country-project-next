@@ -5,7 +5,9 @@ import Search from '../components/Search';
 import DropDown from '../components/DropDown';
 
 import styles from '../styles/Main.module.scss';
-import numberWithCommas from '../utils';
+import { numberWithCommas, transformData } from '../utils';
+import FilterDropDown from './FilterDropDown';
+import SortDropDown from './SortDropDown';
 
 export const SearchAndFiltersContext = React.createContext();
 
@@ -17,27 +19,26 @@ const reducer = (state, action) => {
       return { ...state, query: action.value, type: 'search' };
     case 'FILTER':
       return { ...state, query: action.value, type: 'filter' };
+    case 'SORT':
+      return { ...state, query: action.value, type: 'sort' };
+    default:
+      return state;
   }
 };
 
 export default function Main({ countries }) {
   const [searchValue, setSearchValue] = useState('');
-  const [selectedRegion, setSelectedRegion] = useState('');
+  const [selectedValue, setSelectedValue] = useState('');
   const [limit, setLimit] = useState(8);
-  const [state, dispatch] = useReducer(reducer, initialState);
 
-  console.log('searchValue', countries.lenght);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const { query, type } = state;
 
-  const filteredData = countries.filter((country) => {
-    if (!query) {
-      return country;
-    }
-    return type === 'search'
-      ? country.name.common.toLowerCase() === query
-      : country.region === query;
-  });
+  const filteredData =
+    type === 'sort'
+      ? transformData.sort(countries, type, query)
+      : transformData.filter(countries, type, query);
 
   const firstPageList = filteredData.slice(0, limit);
 
@@ -52,16 +53,16 @@ export default function Main({ countries }) {
           value={{
             searchValue,
             setSearchValue,
-            setSelectedRegion,
-            selectedRegion,
+            setSelectedValue,
+            selectedValue,
             setLimit,
             dispatch,
           }}
         >
           <Search />
           <div className={styles.dropDown}>
-            <DropDown />
-            <DropDown />
+            <SortDropDown />
+            <FilterDropDown />
           </div>
         </SearchAndFiltersContext.Provider>
       </div>
