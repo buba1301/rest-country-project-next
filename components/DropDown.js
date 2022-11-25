@@ -21,7 +21,14 @@ const regions = [
   'All',
 ];
 
-export default function DropDown() {
+const sort = ['ByName', 'ByPopulation', 'All'];
+
+const values = {
+  FILTER: regions,
+  SORT: sort,
+};
+
+export default function DropDown({ type }) {
   const {
     setSearchValue,
     setSelectedRegion,

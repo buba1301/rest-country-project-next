@@ -82,9 +82,3 @@
 	@include variable(colorHover, color, black);
 	transition: 0.2s 0.1s;
 }
-
-@media (max-width: 680px) {
-	.listbox {
-		justify-self: start;
-	}
-}

@@ -59,7 +59,10 @@ export default function Main({ countries }) {
           }}
         >
           <Search />
-          <DropDown />
+          <div className={styles.dropDown}>
+            <DropDown />
+            <DropDown />
+          </div>
         </SearchAndFiltersContext.Provider>
       </div>
       <div className={styles.main}>

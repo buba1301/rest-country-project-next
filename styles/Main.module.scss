@@ -10,6 +10,13 @@
 	padding-top: 2rem;
 }
 
+.dropDown {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	justify-self: end;
+}
+
 .main {
 	height: 100vh;
 	flex: 1;
@@ -54,4 +61,10 @@
 
 .moreCountries:disabled {
 	background: red;
+}
+
+@media (max-width: 680px) {
+	.dropDown {
+		justify-self: start;
+	}
 }
