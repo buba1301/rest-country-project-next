@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 
 import { SearchAndFiltersContext } from './Main';
@@ -6,14 +6,14 @@ import { SearchAndFiltersContext } from './Main';
 import s from '../styles/Search.module.scss';
 
 export default function Search() {
-  const { searchValue, setSearchValue, setSelectedValue, dispatch } =
+  const { setSearchValue, setSelectedValue, dispatch, query } =
     useContext(SearchAndFiltersContext);
 
   const handleChange = (e) => {
     const { value } = e.target;
-    setSearchValue(value.toLowerCase());
-    setSelectedValue('');
+    setSearchValue(value);
     dispatch({ type: 'SEARCH', value });
+    setSelectedValue('');
   };
 
   return (
@@ -22,7 +22,7 @@ export default function Search() {
         className={s.input}
         type='search'
         placeholder='Search...'
-        value={searchValue}
+        value={query}
         onChange={handleChange}
       />
       <MagnifyingGlassIcon className={s.icon} />

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import DropDown from './DropDown';
 import { SearchAndFiltersContext } from './Main';
 
@@ -12,29 +12,24 @@ const regions = [
 ];
 
 export default function FilterDropDown() {
-  const {
-    setSearchValue,
-    setSelectedValue,
-    selectedValue,
-    setLimit,
-    dispatch,
-  } = useContext(SearchAndFiltersContext);
+  const [value, setValue] = useState('');
+
+  const { setSearchValue, setLimit, dispatch } = useContext(
+    SearchAndFiltersContext
+  );
 
   const handleChange = (value) => {
-    setSelectedValue(value !== 'All' ? value : '');
+    setValue(value);
+    dispatch({ type: 'FILTER', value: value === 'All' ? '' : value });
     setSearchValue('');
     value === 'All' && setLimit(8);
   };
-
-  useEffect(() => {
-    dispatch({ type: 'FILTER', value: selectedValue });
-  }, [selectedValue]);
 
   return (
     <DropDown
       values={regions}
       name='Filtres By Region'
-      selectedValue={selectedValue}
+      selectedValue={value}
       onChange={handleChange}
     />
   );

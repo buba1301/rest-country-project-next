@@ -2,7 +2,6 @@ import React, { useReducer, useState } from 'react';
 import Link from 'next/link';
 import Card from '../components/Card';
 import Search from '../components/Search';
-import DropDown from '../components/DropDown';
 
 import styles from '../styles/Main.module.scss';
 import { numberWithCommas, transformData } from '../utils';
@@ -57,6 +56,7 @@ export default function Main({ countries }) {
             selectedValue,
             setLimit,
             dispatch,
+            query,
           }}
         >
           <Search />
@@ -90,7 +90,7 @@ export default function Main({ countries }) {
       <button
         type='button'
         onClick={handleClick}
-        disabled={searchValue !== ''}
+        // disabled={searchValue !== ''}
         className={styles.moreCountries}
       >
         More countries...

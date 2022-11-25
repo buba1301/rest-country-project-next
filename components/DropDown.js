@@ -20,13 +20,9 @@ export default function DropDown({
 }) {
   return (
     <div className={s.listbox}>
-      <Listbox
-        value={selectedValue}
-        onChange={onChange}
-        name='filter'
-      >
+      <Listbox value={selectedValue} onChange={onChange}>
         <Listbox.Button className={s.listboxButton}>
-          <span>{name}</span>
+          <span>{!selectedValue ? name : selectedValue}</span>
           <span>
             <ChevronDownIcon />
           </span>
