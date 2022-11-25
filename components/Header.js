@@ -9,11 +9,13 @@ const themes = {
     backgroundElements: 'hsl(209, 23%, 22%)',
     background: 'hsl(207, 26%, 17%)',
     color: 'hsl(0, 0%, 100%)',
+    colorHover: 'hsl(200, 15%, 8%)',
   },
   light: {
     backgroundElements: 'hsl(0, 0%, 100%)',
     background: 'hsl(0, 0%, 98%)',
     color: 'hsl(200, 15%, 8%)',
+    colorHover: 'hsl(0, 0%, 100%)',
   },
 };
 
