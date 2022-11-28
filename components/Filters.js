@@ -26,7 +26,7 @@ export default function Filters({
   );
 
   useEffect(() => {
-    type === 'search' && setValue(initialValue);
+    type !== action.toLowerCase() && setValue(initialValue);
   }, [type]);
 
   const handleChange = (value) => {

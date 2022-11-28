@@ -32,8 +32,6 @@ export default function Main({ countries }) {
 
   const { query, type } = state;
 
-  console.log('MAIN', type, query);
-
   const filteredData =
     type === 'sort'
       ? transformData.sort(countries, type, query)
