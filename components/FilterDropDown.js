@@ -19,7 +19,7 @@ export default function FilterDropDown() {
   );
 
   useEffect(() => {
-    type === 'search' && setValue('');
+    type === 'search' && setValue('All');
   }, [type]);
 
   const handleChange = (value) => {

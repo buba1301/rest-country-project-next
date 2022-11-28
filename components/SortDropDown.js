@@ -12,7 +12,7 @@ export default function SortDropDown() {
   );
 
   useEffect(() => {
-    type === 'search' && setValue('');
+    type === 'search' && setValue('Reset');
   }, [type]);
 
   const handleChange = (value) => {
