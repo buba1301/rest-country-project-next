@@ -15,6 +15,7 @@ export default function DropDown({
   selectedValue,
   onChange,
 }) {
+  console.log('DropDown', name);
   return (
     <div className={s.listbox}>
       <Listbox value={selectedValue} onChange={onChange}>
@@ -31,8 +32,8 @@ export default function DropDown({
               className={s.option}
               value={value}
             >
-              {selectedValue === value && selectedValue !== 'All' ? (
-                <span>
+              {selectedValue === value ? (
+                <span className={s.checkIcon}>
                   <CheckIcon />
                 </span>
               ) : (
