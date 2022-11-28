@@ -6,6 +6,7 @@ import Search from '../components/Search';
 import styles from '../styles/Main.module.scss';
 import { numberWithCommas, transformData } from '../utils';
 import Filters from './Filters';
+import Button from './Button';
 
 export const SearchAndFiltersContext = React.createContext();
 
@@ -91,14 +92,21 @@ export default function Main({ countries }) {
           )}
         </div>
       </div>
-      <button
-        type='button'
+      <Button
         onClick={handleClick}
         disabled={searchValue !== ''}
-        className={styles.moreCountries}
-      >
-        More countries...
-      </button>
+        text='More countries...'
+        size='xl'
+      />
     </>
   );
 }
+
+/* <button
+  type='button'
+  onClick={handleClick}
+  disabled={searchValue !== ''}
+  className={styles.moreCountries}
+>
+  More countries...
+</button>; */

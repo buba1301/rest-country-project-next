@@ -1,0 +1,24 @@
+@import './variadles.scss';
+
+.xlBtn {
+	width: 100%;
+	height: 5rem;
+	@include variable(backgroundElements, background, black);
+	cursor: pointer;
+	font-size: 1.6rem;
+	border: none;
+	border-radius: 1rem;
+	box-shadow: 3px 3px 10px 3px rgba(34, 60, 80, 0.2);
+}
+
+.xlBtn:hover {
+	background: $dark-gray;
+}
+
+.xlBtn:active {
+	transform: scale(95%);
+}
+
+.xlBtn:disabled {
+	display: none;
+}
