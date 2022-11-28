@@ -15,7 +15,6 @@ export default function DropDown({
   selectedValue,
   onChange,
 }) {
-  console.log('DropDown', name);
   return (
     <div className={s.listbox}>
       <Listbox value={selectedValue} onChange={onChange}>

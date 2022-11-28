@@ -10,7 +10,7 @@ const filterData = (data, type, query) => {
   return data.filter((country) => {
     return type === 'search'
       ? country.name.common.toLowerCase() === query
-      : country.region === query;
+      : country.region.toLowerCase() === query;
   });
 };
 

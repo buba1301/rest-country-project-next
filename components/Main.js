@@ -5,8 +5,7 @@ import Search from '../components/Search';
 
 import styles from '../styles/Main.module.scss';
 import { numberWithCommas, transformData } from '../utils';
-import FilterDropDown from './FilterDropDown';
-import SortDropDown from './SortDropDown';
+import Filters from './Filters';
 
 export const SearchAndFiltersContext = React.createContext();
 
@@ -33,6 +32,8 @@ export default function Main({ countries }) {
 
   const { query, type } = state;
 
+  console.log('MAIN', type, query);
+
   const filteredData =
     type === 'sort'
       ? transformData.sort(countries, type, query)
@@ -58,8 +59,16 @@ export default function Main({ countries }) {
         >
           <Search />
           <div className={styles.dropDown}>
-            <SortDropDown />
-            <FilterDropDown />
+            <Filters
+              initialValue='Reset'
+              action='SORT'
+              dropDownName='Sort'
+            />
+            <Filters
+              initialValue='All'
+              action='FILTER'
+              dropDownName='Filter By Region'
+            />
           </div>
         </SearchAndFiltersContext.Provider>
       </div>
