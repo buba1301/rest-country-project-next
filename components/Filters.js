@@ -2,6 +2,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import DropDown from './DropDown';
 import { SearchAndFiltersContext } from './Main';
+import Maybe from './MayBe';
 
 const regions = [
   'Africa',
@@ -25,26 +26,47 @@ export default function Filters({
     SearchAndFiltersContext
   );
 
+  const isResetFilterValue = type === 'search' && action === 'FILTER';
+
   useEffect(() => {
-    type !== action.toLowerCase() && setValue(initialValue);
+    isResetFilterValue && setValue(initialValue);
   }, [type]);
 
   const handleChange = (value) => {
     setValue(value);
+
     dispatch({
       type: action,
       value: value === initialValue ? '' : value.toLowerCase(),
     });
+
     setSearchValue('');
+
     value === initialValue && setLimit(8);
   };
 
+  const isResetFilterName = value === 'All' || type === 'search';
+
+  const isResetSortName = value === 'Reset';
+
   return (
-    <DropDown
-      values={action === 'SORT' ? sortTypes : regions}
-      name={value === initialValue ? dropDownName : value}
-      selectedValue={value}
-      onChange={handleChange}
-    />
+    <>
+      <Maybe test={action === 'SORT'}>
+        <DropDown
+          values={sortTypes}
+          name={isResetSortName ? dropDownName : value}
+          selectedValue={value}
+          onChange={handleChange}
+        />
+      </Maybe>
+      <Maybe test={action == 'FILTER'}>
+        <DropDown
+          values={regions}
+          name={isResetFilterName ? dropDownName : value}
+          selectedValue={value}
+          onChange={handleChange}
+        />
+      </Maybe>
+    </>
   );
 }

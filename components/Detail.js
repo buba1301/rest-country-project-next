@@ -7,8 +7,6 @@ import s from '../styles/Detail.module.scss';
 import { numberWithCommas } from '../utils';
 
 export default function Detail({ countryData }) {
-  console.log('Detail', typeof countryData?.population);
-
   const infoList = {
     Population: numberWithCommas(countryData?.population),
     Region: countryData?.region,

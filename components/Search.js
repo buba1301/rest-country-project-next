@@ -13,7 +13,7 @@ export default function Search() {
   const handleChange = (e) => {
     const { value } = e.target;
     setSearchValue(value);
-    dispatch({ type: 'SEARCH', value });
+    dispatch({ type: 'SEARCH', value: value.toLowerCase() });
   };
 
   return (

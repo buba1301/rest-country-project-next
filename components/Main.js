@@ -10,16 +10,37 @@ import Button from './Button';
 
 export const SearchAndFiltersContext = React.createContext();
 
-const initialState = { query: '', type: '' };
-
-const reducer = (state, action) => {
-  switch (action.type) {
+const reducer = (state, { type, value }) => {
+  switch (type) {
     case 'SEARCH':
-      return { ...state, query: action.value, type: 'search' };
+      return {
+        ...state,
+        type: 'search',
+        result: transformData.filter(
+          state.countries,
+          type.toLowerCase(),
+          value
+        ),
+      };
+
     case 'FILTER':
-      return { ...state, query: action.value, type: 'filter' };
+      return {
+        ...state,
+        type: 'filter',
+        result: transformData.filter(
+          state.countries,
+          type.toLowerCase(),
+          value
+        ),
+      };
+
     case 'SORT':
-      return { ...state, query: action.value, type: 'sort' };
+      return {
+        ...state,
+        type: 'sort',
+        sortValue: value,
+      };
+
     default:
       return state;
   }
@@ -29,16 +50,22 @@ export default function Main({ countries }) {
   const [searchValue, setSearchValue] = useState('');
   const [limit, setLimit] = useState(8);
 
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, {
+    type: '',
+    sortValue: '',
+    countries,
+    result: countries,
+  });
 
-  const { query, type } = state;
+  const { type, result, sortValue } = state;
 
-  const filteredData =
-    type === 'sort'
-      ? transformData.sort(countries, type, query)
-      : transformData.filter(countries, type, query);
+  const sortedCountries = transformData.sort(
+    result,
+    type.toLowerCase(),
+    sortValue
+  );
 
-  const firstPageList = filteredData.slice(0, limit);
+  const firstPageList = sortedCountries.slice(0, limit);
 
   const handleClick = () => {
     setLimit((prevState) => prevState + 8);
@@ -101,12 +128,3 @@ export default function Main({ countries }) {
     </>
   );
 }
-
-/* <button
-  type='button'
-  onClick={handleClick}
-  disabled={searchValue !== ''}
-  className={styles.moreCountries}
->
-  More countries...
-</button>; */
