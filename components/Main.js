@@ -33,7 +33,7 @@ export default function Main({ countries }) {
   const { type, result, sortValue, dispatch } =
     useFiltersState(countries);
 
-  const sortedCountries = transformData.sort(
+  /* const sortedCountries = transformData.sort(
     result,
     type.toLowerCase(),
     sortValue
@@ -43,41 +43,41 @@ export default function Main({ countries }) {
 
   const handleClick = () => {
     setLimit((prevState) => prevState + 8);
-  };
+  };*/
 
   return (
-    <>
+    <SearchAndFiltersContext.Provider
+      value={{
+        sortValue,
+        searchValue,
+        setSearchValue,
+        setLimit,
+        dispatch,
+        type,
+      }}
+    >
       <div className={styles.filters}>
-        <SearchAndFiltersContext.Provider
-          value={{
-            searchValue,
-            setSearchValue,
-            setLimit,
-            dispatch,
-            type,
-          }}
-        >
-          <Search />
-          <div className={styles.dropDown}>
-            {filters.map(
-              ({ id, initialValue, action, dropDownName }) => (
-                <Filters
-                  key={id}
-                  initialValue={initialValue}
-                  action={action}
-                  dropDownName={dropDownName}
-                />
-              )
-            )}
-          </div>
-        </SearchAndFiltersContext.Provider>
+        <Search />
+        <div className={styles.dropDown}>
+          {filters.map(
+            ({ id, initialValue, action, dropDownName }) => (
+              <Filters
+                key={id}
+                initialValue={initialValue}
+                action={action}
+                dropDownName={dropDownName}
+              />
+            )
+          )}
+        </div>
       </div>
-      <CardsContainer countriesCards={firstPageList} />
-      <Button
+      <CardsContainer countries={result} />
+    </SearchAndFiltersContext.Provider>
+  );
+}
+
+/* <Button
         onClick={handleClick}
         text='More countries...'
         size='xl'
-      />
-    </>
-  );
-}
+      /> */

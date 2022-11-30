@@ -40,7 +40,7 @@ export default function Filters({
       value: value === initialValue ? '' : value.toLowerCase(),
     });
 
-    setSearchValue('');
+    action === 'FILTER' && setSearchValue('');
 
     value === initialValue && setLimit(8);
   };
