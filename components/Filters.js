@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useState } from 'react';
 import DropDown from './DropDown';
-import { SearchAndFiltersContext } from './Main';
+import { SearchAndFiltersContext } from '../context/context';
 import Maybe from './MayBe';
 
 const regions = [

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 
-import { SearchAndFiltersContext } from './Main';
+import { SearchAndFiltersContext } from '../context/context';
 
 import s from '../styles/Search.module.scss';
 

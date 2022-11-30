@@ -9,6 +9,7 @@ import useFiltersState from '../hooks/useFiltersState';
 import CardsContainer from './CardsContainer';
 
 import { transformData } from '../utils';
+import { SearchAndFiltersContext } from '../context/context';
 
 const filters = [
   {
@@ -24,8 +25,6 @@ const filters = [
     dropDownName: 'Filter By Region',
   },
 ];
-
-export const SearchAndFiltersContext = React.createContext();
 
 export default function Main({ countries }) {
   const [searchValue, setSearchValue] = useState('');
