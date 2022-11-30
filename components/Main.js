@@ -1,13 +1,29 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
-import Card from '../components/Card';
-import Search from '../components/Search';
 
 import styles from '../styles/Main.module.scss';
-import { numberWithCommas, transformData } from '../utils';
+
+import Search from '../components/Search';
 import Filters from './Filters';
 import Button from './Button';
 import useFiltersState from '../hooks/useFiltersState';
+import CardsContainer from './CardsContainer';
+
+import { transformData } from '../utils';
+
+const filters = [
+  {
+    id: '1',
+    initialValue: 'Reset',
+    action: 'SORT',
+    dropDownName: 'Sort',
+  },
+  {
+    id: '2',
+    initialValue: 'All',
+    action: 'FILTER',
+    dropDownName: 'Filter By Region',
+  },
+];
 
 export const SearchAndFiltersContext = React.createContext();
 
@@ -44,40 +60,20 @@ export default function Main({ countries }) {
         >
           <Search />
           <div className={styles.dropDown}>
-            <Filters
-              initialValue='Reset'
-              action='SORT'
-              dropDownName='Sort'
-            />
-            <Filters
-              initialValue='All'
-              action='FILTER'
-              dropDownName='Filter By Region'
-            />
+            {filters.map(
+              ({ id, initialValue, action, dropDownName }) => (
+                <Filters
+                  key={id}
+                  initialValue={initialValue}
+                  action={action}
+                  dropDownName={dropDownName}
+                />
+              )
+            )}
           </div>
         </SearchAndFiltersContext.Provider>
       </div>
-      <div className={styles.main}>
-        <div className={styles.grid}>
-          {firstPageList.map(
-            ({ name, population, region, capital, flags, cca3 }) => (
-              <Link
-                href={`/countries/${cca3.toLowerCase()}`}
-                key={name.common}
-                className={styles.link}
-              >
-                <Card
-                  name={name.common}
-                  population={numberWithCommas(population)}
-                  region={region}
-                  capital={capital ? capital[0] : 'no capital'}
-                  flag={flags.svg}
-                />
-              </Link>
-            )
-          )}
-        </div>
-      </div>
+      <CardsContainer countriesCards={firstPageList} />
       <Button
         onClick={handleClick}
         text='More countries...'
