@@ -117,7 +117,6 @@ export default function Main({ countries }) {
       </div>
       <Button
         onClick={handleClick}
-        disabled={searchValue !== ''}
         text='More countries...'
         size='xl'
       />
