@@ -2,16 +2,22 @@ export function numberWithCommas(num) {
   return num && num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
+const searchData = (data, query) => {
+  if (!query) {
+    return data;
+  }
+
+  return data.filter(({ name }) =>
+    name.common.toLowerCase().startsWith(query)
+  );
+};
+
 const filterData = (data, type, query) => {
   if (!query) {
     return data;
   }
 
-  return data.filter((country) => {
-    return type === 'search'
-      ? country.name.common.toLowerCase() === query
-      : country.region.toLowerCase() === query;
-  });
+  return data.filter(({ region }) => region.toLowerCase() === query);
 };
 
 const getValueFromCounrty = (country, query) =>
@@ -48,4 +54,5 @@ const sortData = (data, type, query) => {
 export const transformData = {
   filter: filterData,
   sort: sortData,
+  search: searchData,
 };

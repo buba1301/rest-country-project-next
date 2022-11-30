@@ -16,11 +16,7 @@ const reducer = (state, { type, value }) => {
       return {
         ...state,
         type: 'search',
-        result: transformData.filter(
-          state.countries,
-          type.toLowerCase(),
-          value
-        ),
+        result: transformData.search(state.countries, value),
       };
 
     case 'FILTER':
