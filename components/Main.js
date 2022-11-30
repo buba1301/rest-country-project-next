@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 
 import styles from '../styles/Main.module.scss';
 
-import Search from '../components/Search';
+import Search from './Search';
 import Filters from './Filters';
-import useFiltersState from '../hooks/useFiltersState';
 import CardsContainer from './CardsContainer';
 
 import { SearchAndFiltersContext } from '../context/context';
+import useFiltersState from '../hooks/useFiltersState';
 
 const filters = [
   {
