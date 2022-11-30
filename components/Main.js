@@ -4,11 +4,9 @@ import styles from '../styles/Main.module.scss';
 
 import Search from '../components/Search';
 import Filters from './Filters';
-import Button from './Button';
 import useFiltersState from '../hooks/useFiltersState';
 import CardsContainer from './CardsContainer';
 
-import { transformData } from '../utils';
 import { SearchAndFiltersContext } from '../context/context';
 
 const filters = [
@@ -28,22 +26,9 @@ const filters = [
 
 export default function Main({ countries }) {
   const [searchValue, setSearchValue] = useState('');
-  const [limit, setLimit] = useState(8);
 
   const { type, result, sortValue, dispatch } =
     useFiltersState(countries);
-
-  /* const sortedCountries = transformData.sort(
-    result,
-    type.toLowerCase(),
-    sortValue
-  );
-
-  const firstPageList = sortedCountries.slice(0, limit);
-
-  const handleClick = () => {
-    setLimit((prevState) => prevState + 8);
-  };*/
 
   return (
     <SearchAndFiltersContext.Provider
@@ -51,7 +36,6 @@ export default function Main({ countries }) {
         sortValue,
         searchValue,
         setSearchValue,
-        setLimit,
         dispatch,
         type,
       }}
@@ -75,9 +59,3 @@ export default function Main({ countries }) {
     </SearchAndFiltersContext.Provider>
   );
 }
-
-/* <Button
-        onClick={handleClick}
-        text='More countries...'
-        size='xl'
-      /> */
