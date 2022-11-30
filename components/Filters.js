@@ -22,7 +22,7 @@ export default function Filters({
 }) {
   const [value, setValue] = useState(initialValue);
 
-  const { setSearchValue, setLimit, dispatch, type } = useContext(
+  const { setSearchValue, dispatch, type } = useContext(
     SearchAndFiltersContext
   );
 
@@ -37,12 +37,10 @@ export default function Filters({
 
     dispatch({
       type: action,
-      value: value === initialValue ? '' : value.toLowerCase(),
+      value: value !== initialValue ? value.toLowerCase() : '',
     });
 
     action === 'FILTER' && setSearchValue('');
-
-    value === initialValue && setLimit(8);
   };
 
   const isResetFilterName = value === 'All' || type === 'search';
