@@ -17,29 +17,6 @@
 	justify-self: end;
 }
 
-.moreCountries {
-	width: 100%;
-	height: 5rem;
-	@include variable(backgroundElements, background, black);
-	cursor: pointer;
-	font-size: 1.6rem;
-	border: none;
-	border-radius: 1rem;
-	box-shadow: 3px 3px 10px 3px rgba(34, 60, 80, 0.2);
-}
-
-.moreCountries:hover {
-	background: $dark-gray;
-}
-
-.moreCountries:active {
-	transform: scale(95%);
-}
-
-.moreCountries:disabled {
-	display: none;
-}
-
 @media (max-width: 680px) {
 	.dropDown {
 		justify-self: start;
