@@ -30,6 +30,12 @@ export default function Main({ countries }) {
   const { type, result, sortValue, dispatch } =
     useFiltersState(countries);
 
+  const handleChange = (e) => {
+    const { value } = e.target;
+    setSearchValue(value);
+    dispatch({ type: 'SEARCH', value: value.toLowerCase() });
+  };
+
   return (
     <SearchAndFiltersContext.Provider
       value={{
@@ -41,7 +47,7 @@ export default function Main({ countries }) {
       }}
     >
       <div className={styles.filters}>
-        <Search />
+        <Search value={searchValue} onChange={handleChange} />
         <div className={styles.dropDown}>
           {filters.map(
             ({ id, initialValue, action, dropDownName }) => (

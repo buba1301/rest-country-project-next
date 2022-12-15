@@ -1,29 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
-
-import { SearchAndFiltersContext } from '../context/context';
 
 import s from '../styles/Search.module.scss';
 
-export default function Search() {
-  const { searchValue, setSearchValue, dispatch } = useContext(
-    SearchAndFiltersContext
-  );
-
-  const handleChange = (e) => {
-    const { value } = e.target;
-    setSearchValue(value);
-    dispatch({ type: 'SEARCH', value: value.toLowerCase() });
-  };
-
+export default function Search({ value, onChange }) {
   return (
     <form className={s.container}>
       <input
         className={s.input}
         type='search'
         placeholder='Search...'
-        value={searchValue}
-        onChange={handleChange}
+        value={value}
+        onChange={onChange}
       />
       <MagnifyingGlassIcon className={s.icon} />
     </form>
