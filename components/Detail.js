@@ -1,31 +1,26 @@
 import React from 'react';
-import Link from 'next/link';
+
 import { ArrowLeftIcon } from '@heroicons/react/20/solid';
 import Image from 'next/image';
 
+import Container from './Container';
+
 import s from '../styles/Detail.module.scss';
-import { numberWithCommas } from '../utils';
+
+import { getInfoList } from '../utils';
+import CustomLink from './CustomLink';
+import CountryInfo from './CountryInfo';
 
 export default function Detail({ countryData }) {
-  const infoList = {
-    Population: numberWithCommas(countryData?.population),
-    Region: countryData?.region,
-    Subregion: countryData?.subregion,
-    Capital: countryData?.capital
-      ? countryData?.capital[0]
-      : 'no capital',
-    Currencies: countryData?.currencies
-      ? Object.keys(countryData?.currencies)[0]
-      : 'no capital',
-  };
+  const infoList = getInfoList(countryData);
 
   return (
-    <div className={s.container}>
+    <Container classKey='container'>
       <div className={s.backButtonWrap}>
-        <Link href='/' className={s.backBtn}>
+        <CustomLink name='backLink' href='/'>
           <ArrowLeftIcon />
           Back
-        </Link>
+        </CustomLink>
       </div>
       <div className={s.flagWrap}>
         <Image
@@ -36,33 +31,11 @@ export default function Detail({ countryData }) {
           alt='Flag image'
         />
       </div>
-      <div className={s.infoWrap}>
-        <h1 className={s.name}>{countryData?.name.common}</h1>
-        <div className={s.info}>
-          {Object.entries(infoList).map(([key, value]) => (
-            <>
-              <span key={key}>
-                <strong>{`${key}: `}</strong>
-                {value}
-              </span>
-            </>
-          ))}
-        </div>
-        <div className={s.borders}>
-          <strong>{`Border countries:  `}</strong>
-          {countryData?.borders
-            ? countryData?.borders.map((border) => (
-                <Link
-                  href={`/countries/${border.toLowerCase()}`}
-                  className={s.button}
-                  key={border}
-                >
-                  {border}
-                </Link>
-              ))
-            : ' No'}
-        </div>
-      </div>
-    </div>
+      <CountryInfo
+        name={countryData.name.common}
+        borders={countryData.borders}
+        infoList={infoList}
+      />
+    </Container>
   );
 }

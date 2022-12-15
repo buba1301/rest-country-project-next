@@ -2,6 +2,20 @@ export function numberWithCommas(num) {
   return num && num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
+export function getInfoList(countryData) {
+  return {
+    Population: numberWithCommas(countryData?.population),
+    Region: countryData?.region,
+    Subregion: countryData?.subregion,
+    Capital: countryData?.capital
+      ? countryData?.capital[0]
+      : 'no capital',
+    Currencies: countryData?.currencies
+      ? Object.keys(countryData?.currencies)[0]
+      : 'no capital',
+  };
+}
+
 const searchData = (data, query) => {
   if (!query) {
     return data;
