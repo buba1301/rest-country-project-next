@@ -33,13 +33,11 @@ export default function Filter({
   };
 
   return (
-    <>
-      <DropDown
-        values={values}
-        name={value !== initialValue ? value : dropDownName}
-        selectedValue={value}
-        onChange={handleChange}
-      />
-    </>
+    <DropDown
+      values={values}
+      name={value !== initialValue ? value : dropDownName}
+      selectedValue={value}
+      onChange={handleChange}
+    />
   );
 }
