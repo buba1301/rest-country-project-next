@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from './Container';
-import Filter from './Filter';
+import Filter from '../containers/Filter';
 
 const filters = [
   {

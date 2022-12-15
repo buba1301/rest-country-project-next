@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Search from './Search';
+import Search from '../components/Search';
 import Container from './Container';
 import NewFilters from './Filters';
 import CardsContainer from './CardsContainer';

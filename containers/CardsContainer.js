@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { SearchAndFiltersContext } from '../context/context';
 import { numberWithCommas, transformData } from '../utils';
 
-import Card from './Card';
-import Button from './Button';
+import Card from '../components/Card';
+import Button from '../components/Button';
 import Container from './Container';
 
 export default function CardsContainer({ countries }) {

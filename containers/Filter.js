@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useState } from 'react';
-import DropDown from './DropDown';
+import DropDown from '../components/DropDown';
 import { SearchAndFiltersContext } from '../context/context';
 
 export default function Filter({

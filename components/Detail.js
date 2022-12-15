@@ -3,7 +3,7 @@ import React from 'react';
 import { ArrowLeftIcon } from '@heroicons/react/20/solid';
 import Image from 'next/image';
 
-import Container from './Container';
+import Container from '../containers/Container';
 
 import s from '../styles/Detail.module.scss';
 
