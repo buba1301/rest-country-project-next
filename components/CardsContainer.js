@@ -34,7 +34,6 @@ export default function CardsContainer({ countries }) {
               <Link
                 href={`/countries/${cca3.toLowerCase()}`}
                 key={name.common}
-                className={styles.link}
               >
                 <Card
                   name={name.common}
