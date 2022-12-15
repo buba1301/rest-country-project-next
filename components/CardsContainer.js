@@ -5,8 +5,7 @@ import { numberWithCommas, transformData } from '../utils';
 
 import Card from './Card';
 import Button from './Button';
-
-import styles from '../styles/CardsContainer.module.scss';
+import Container from './Container';
 
 export default function CardsContainer({ countries }) {
   const [limit, setLimit] = useState(9);
@@ -27,26 +26,24 @@ export default function CardsContainer({ countries }) {
 
   return (
     <>
-      <div className={styles.main}>
-        <div className={styles.grid}>
-          {firstPageList.map(
-            ({ name, population, region, capital, flags, cca3 }) => (
-              <Link
-                href={`/countries/${cca3.toLowerCase()}`}
-                key={name.common}
-              >
-                <Card
-                  name={name.common}
-                  population={numberWithCommas(population)}
-                  region={region}
-                  capital={capital ? capital[0] : 'no capital'}
-                  flag={flags.svg}
-                />
-              </Link>
-            )
-          )}
-        </div>
-      </div>
+      <Container classKey='grid'>
+        {firstPageList.map(
+          ({ name, population, region, capital, flags, cca3 }) => (
+            <Link
+              href={`/countries/${cca3.toLowerCase()}`}
+              key={name.common}
+            >
+              <Card
+                name={name.common}
+                population={numberWithCommas(population)}
+                region={region}
+                capital={capital ? capital[0] : 'no capital'}
+                flag={flags.svg}
+              />
+            </Link>
+          )
+        )}
+      </Container>
 
       <Button
         onClick={handleClick}
@@ -56,3 +53,5 @@ export default function CardsContainer({ countries }) {
     </>
   );
 }
+
+// div className={styles.grid}>

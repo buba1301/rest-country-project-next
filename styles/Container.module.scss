@@ -17,6 +17,15 @@
 	justify-self: end;
 }
 
+.grid {
+	width: 100%;
+	height: 100%;
+	padding: 2rem 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	grid-gap: 2rem 2rem
+}
+
 @media (max-width: 680px) {
 	.dropDown {
 		justify-self: start;
