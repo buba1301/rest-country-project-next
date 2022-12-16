@@ -8,7 +8,7 @@ import Button from '../components/Button';
 import Container from './Container';
 
 export default function CardsContainer({ countries }) {
-  const [limit, setLimit] = useState(9);
+  const [limit, setLimit] = useState(8);
 
   const { sortValue, filterValue, searchValue } = useContext(
     SearchAndFiltersContext
@@ -32,7 +32,7 @@ export default function CardsContainer({ countries }) {
   const firstPageList = sortedCountries.slice(0, limit);
 
   const handleClick = () => {
-    setLimit((prevState) => prevState + 9);
+    setLimit((prevState) => prevState + 8);
   };
 
   return (
