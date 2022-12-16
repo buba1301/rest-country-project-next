@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer } from 'react';
 
 import Search from '../components/Search';
 import Container from './Container';
@@ -6,24 +6,14 @@ import NewFilters from './Filters';
 import CardsContainer from './CardsContainer';
 
 import { SearchAndFiltersContext } from '../context/context';
-import useFiltersState, {
-  INITIAL_STATE,
-  REDUCER,
-} from '../hooks/useFiltersState';
+import useFiltersState from '../hooks/useFiltersState';
 
 export default function Main({ countries }) {
-  // const [searchValue, setSearchValue] = useState('');
-
-  /*const { type, result, sortValue, dispatch } =
-    useFiltersState(countries);*/
-
-  const [state, dispatch] = useReducer(REDUCER, INITIAL_STATE);
-
-  const { searchValue, filterValue, sortValue } = state;
+  const { searchValue, filterValue, sortValue, dispatch } =
+    useFiltersState();
 
   const handleChange = (e) => {
     const { value } = e.target;
-    // setSearchValue(value);
     dispatch({ type: 'SEARCH', value: value.toLowerCase() });
     dispatch({ type: 'RESET' });
   };
@@ -34,9 +24,7 @@ export default function Main({ countries }) {
         sortValue,
         searchValue,
         filterValue,
-        // setSearchValue,
         dispatch,
-        // type,
       }}
     >
       <Container classKey='filters'>

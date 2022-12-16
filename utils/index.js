@@ -31,7 +31,9 @@ const filterData = (data, query) => {
     return data;
   }
 
-  return data.filter(({ region }) => region.toLowerCase() === query);
+  return data.filter(
+    ({ region }) => region.toLowerCase() === query.toLowerCase()
+  );
 };
 
 const getValueFromCounrty = (country, query) =>
@@ -49,11 +51,19 @@ const sortData = (data, query) => {
       const country1 = copyData[i];
       const country2 = copyData[i + 1];
 
-      const value1 = getValueFromCounrty(country1, query);
-      const value2 = getValueFromCounrty(country2, query);
+      const value1 = getValueFromCounrty(
+        country1,
+        query.toLowerCase()
+      );
+      const value2 = getValueFromCounrty(
+        country2,
+        query.toLowerCase()
+      );
 
       const isTrue =
-        query === 'name' ? value1 > value2 : value1 < value2;
+        query.toLowerCase() === 'name'
+          ? value1 > value2
+          : value1 < value2;
 
       if (isTrue) {
         copyData[i] = country2;
