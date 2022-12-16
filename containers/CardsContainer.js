@@ -10,11 +10,22 @@ import Container from './Container';
 export default function CardsContainer({ countries }) {
   const [limit, setLimit] = useState(9);
 
-  const { sortValue, type } = useContext(SearchAndFiltersContext);
+  const { sortValue, filterValue, searchValue } = useContext(
+    SearchAndFiltersContext
+  );
+
+  const filteredCountries = transformData.filter(
+    countries,
+    filterValue
+  );
+
+  const searchCountries = transformData.search(
+    filteredCountries,
+    searchValue
+  );
 
   const sortedCountries = transformData.sort(
-    countries,
-    type.toLowerCase(),
+    searchCountries,
     sortValue
   );
 

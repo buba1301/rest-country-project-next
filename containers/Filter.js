@@ -5,37 +5,40 @@ import { SearchAndFiltersContext } from '../context/context';
 
 export default function Filter({
   initialValue,
-  action,
+  type,
   dropDownName,
   values,
 }) {
   const [value, setValue] = useState(initialValue);
 
-  const { setSearchValue, dispatch, type } = useContext(
+  /* const { setSearchValue, dispatch, type } = useContext(
     SearchAndFiltersContext
-  );
+  );*/
 
-  const isResetFilterValue = type === 'search' && action === 'FILTER';
+  const { searchValue, filterValue, sortValue, dispatch } =
+    useContext(SearchAndFiltersContext);
 
-  useEffect(() => {
+  // const isResetFilterValue = type === 'search' && action === 'FILTER';
+
+  /* useEffect(() => {
     isResetFilterValue && setValue(initialValue);
-  }, [type]);
+  }, [type]);*/
 
   const handleChange = (value) => {
     setValue(value);
 
     dispatch({
-      type: action,
+      type,
       value: value !== initialValue ? value.toLowerCase() : '',
     });
 
-    action === 'FILTER' && setSearchValue('');
+    // action === 'FILTER' && setSearchValue('');
   };
 
   return (
     <DropDown
       values={values}
-      name={value !== initialValue ? value : dropDownName}
+      name={!!filterValue ? value : dropDownName}
       selectedValue={value}
       onChange={handleChange}
     />

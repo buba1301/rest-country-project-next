@@ -26,7 +26,7 @@ const searchData = (data, query) => {
   );
 };
 
-const filterData = (data, type, query) => {
+const filterData = (data, query) => {
   if (!query) {
     return data;
   }
@@ -37,7 +37,7 @@ const filterData = (data, type, query) => {
 const getValueFromCounrty = (country, query) =>
   query === 'name' ? country[query].common : country[query];
 
-const sortData = (data, type, query) => {
+const sortData = (data, query) => {
   if (!query) {
     return data;
   }

@@ -59,7 +59,11 @@ export const REDUCER = (state, { type, value }) => {
         ...state,
         sortValue: value,
       };
-
+    case 'RESET':
+      return {
+        ...state,
+        filterValue: '',
+      };
     default:
       return state;
   }
