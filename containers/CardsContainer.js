@@ -53,5 +53,3 @@ export default function CardsContainer({ countries }) {
     </>
   );
 }
-
-// div className={styles.grid}>

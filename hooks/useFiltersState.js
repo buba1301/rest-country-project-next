@@ -33,6 +33,38 @@ const reducer = (state, { type, value }) => {
   }
 };
 
+export const INITIAL_STATE = {
+  searchValue: '',
+  filterValue: '',
+  sortValue: '',
+};
+
+export const REDUCER = (state, { type, value }) => {
+  switch (type) {
+    case 'SEARCH':
+      return {
+        ...state,
+        searchValue: value,
+      };
+
+    case 'FILTER':
+      return {
+        ...state,
+        type: 'filter',
+        filterValue: value,
+      };
+
+    case 'SORT':
+      return {
+        ...state,
+        sortValue: value,
+      };
+
+    default:
+      return state;
+  }
+};
+
 const useFiltersState = (countries) => {
   const [state, dispatch] = useReducer(reducer, {
     type: '',
