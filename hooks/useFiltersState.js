@@ -1,49 +1,53 @@
 import { useReducer } from 'react';
-import { transformData } from '../utils';
 
-const reducer = (state, { type, value }) => {
+export const INITIAL_STATE = {
+  searchValue: '',
+  filterValue: '',
+  sortValue: '',
+};
+
+export const REDUCER = (state, { type, value }) => {
   switch (type) {
     case 'SEARCH':
       return {
         ...state,
-        type: 'search',
-        result: transformData.search(state.countries, value),
+        searchValue: value,
       };
 
     case 'FILTER':
       return {
         ...state,
         type: 'filter',
-        result: transformData.filter(
-          state.countries,
-          type.toLowerCase(),
-          value
-        ),
+        filterValue: value,
       };
 
     case 'SORT':
       return {
         ...state,
-        type: 'sort',
         sortValue: value,
       };
-
+    case 'RESET':
+      return {
+        ...state,
+        filterValue: '',
+        sortValue: '',
+      };
+    case 'RESET_SEARCH':
+      return {
+        ...state,
+        searchValue: '',
+      };
     default:
       return state;
   }
 };
 
-const useFiltersState = (countries) => {
-  const [state, dispatch] = useReducer(reducer, {
-    type: '',
-    sortValue: '',
-    countries,
-    result: countries,
-  });
+const useFiltersState = () => {
+  const [state, dispatch] = useReducer(REDUCER, INITIAL_STATE);
 
-  const { type, result, sortValue } = state;
+  const { searchValue, filterValue, sortValue } = state;
 
-  return { type, result, sortValue, dispatch };
+  return { searchValue, filterValue, sortValue, dispatch };
 };
 
 export default useFiltersState;
