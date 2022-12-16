@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import DropDown from '../components/DropDown';
 import { SearchAndFiltersContext } from '../context/context';
 
@@ -9,8 +9,9 @@ export default function Filter({
   dropDownName,
   values,
 }) {
-  const { filterValue, sortValue, searchValue, dispatch } =
-    useContext(SearchAndFiltersContext);
+  const { filterValue, sortValue, dispatch } = useContext(
+    SearchAndFiltersContext
+  );
 
   const value = type === 'FILTER' ? filterValue : sortValue;
 
