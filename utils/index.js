@@ -3,6 +3,7 @@ export function numberWithCommas(num) {
 }
 
 export function getInfoList(countryData) {
+  console.log(countryData);
   return {
     Population: numberWithCommas(countryData?.population),
     Region: countryData?.region,
@@ -12,7 +13,7 @@ export function getInfoList(countryData) {
       : 'no capital',
     Currencies: countryData?.currencies
       ? Object.keys(countryData?.currencies)[0]
-      : 'no capital',
+      : 'no currencies',
   };
 }
 
