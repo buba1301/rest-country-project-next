@@ -1,9 +1,5 @@
 /* eslint-disable no-undef */
-import {
-  getInfoList,
-  numberWithCommas,
-  transformData,
-} from './index';
+import { getInfoList, numberWithCommas, transformData } from './index';
 
 test('get number with commas', () => {
   const actual = numberWithCommas(100000);
@@ -105,18 +101,14 @@ describe('Search, filters and sort functions', () => {
   });
 
   test('test sort function by country name', () => {
-    const actual = transformData
-      .sort(data, 'name')
-      .map(({ name }) => name.common);
+    const actual = transformData.sort(data, 'name').map(({ name }) => name.common);
     const res = ['Argentina', 'Peru', 'Russia'];
 
     expect(actual).toEqual(res);
   });
 
   test('test sort function by country population', () => {
-    const actual = transformData
-      .sort(data, 'population')
-      .map(({ name }) => name.common);
+    const actual = transformData.sort(data, 'population').map(({ name }) => name.common);
 
     const res = ['Russia', 'Argentina', 'Peru'];
 
