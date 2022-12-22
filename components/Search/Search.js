@@ -5,15 +5,15 @@ import s from '../styles/Search.module.scss';
 
 export default function Search({ value, onChange }) {
   return (
-    <form className={s.container}>
+    <div className={s.container}>
       <input
         className={s.input}
-        type='search'
-        placeholder='Search...'
+        type="search"
+        placeholder="Search..."
         value={value}
         onChange={onChange}
       />
       <MagnifyingGlassIcon className={s.icon} />
-    </form>
+    </div>
   );
 }

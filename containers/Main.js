@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Search from '../components/Search';
+import Search from '../components/Search/Search';
 import Container from './Container';
 import NewFilters from './Filters';
 import CardsContainer from './CardsContainer';
@@ -9,8 +9,7 @@ import { SearchAndFiltersContext } from '../context/context';
 import useFiltersState from '../hooks/useFiltersState';
 
 export default function Main({ countries }) {
-  const { searchValue, filterValue, sortValue, dispatch } =
-    useFiltersState();
+  const { searchValue, filterValue, sortValue, dispatch } = useFiltersState();
 
   const handleChange = (e) => {
     const { value } = e.target;
@@ -27,7 +26,7 @@ export default function Main({ countries }) {
         dispatch,
       }}
     >
-      <Container classKey='filters'>
+      <Container classKey="filters">
         <Search value={searchValue} onChange={handleChange} />
 
         <NewFilters />
