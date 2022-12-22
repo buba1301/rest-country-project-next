@@ -11,6 +11,7 @@ test('render button', async () => {
   const button = screen.getByText(/click me/i);
 
   expect(button).toBeInTheDocument();
+  expect(button).toHaveClass('xlBtn');
 
   await userEvent.click(button);
 
