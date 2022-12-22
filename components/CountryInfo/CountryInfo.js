@@ -1,7 +1,7 @@
 import React from 'react';
 
 import s from '../styles/CountryInfo.module.scss';
-import CustomLink from './CustomLink';
+import CustomLink from '../CustomLink';
 
 export default function CountryInfo({ infoList, borders, name }) {
   return (
@@ -22,7 +22,7 @@ export default function CountryInfo({ infoList, borders, name }) {
           ? borders.map((border) => (
               <CustomLink
                 key={border}
-                name='borderLink'
+                name="borderLink"
                 href={`/countries/${border.toLowerCase()}`}
               >
                 {border}
