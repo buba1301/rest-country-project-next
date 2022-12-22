@@ -2,19 +2,11 @@
 import React from 'react';
 import { Listbox } from '@headlessui/react';
 
-import {
-  CheckIcon,
-  ChevronDownIcon,
-} from '@heroicons/react/20/solid';
+import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid';
 
-import s from '../styles/DropDown.module.scss';
+import s from '../../styles/DropDown.module.scss';
 
-export default function DropDown({
-  values,
-  name,
-  selectedValue,
-  onChange,
-}) {
+export default function DropDown({ values, name, selectedValue, onChange }) {
   return (
     <div className={s.listbox}>
       <Listbox value={selectedValue} onChange={onChange}>
@@ -26,11 +18,7 @@ export default function DropDown({
         </Listbox.Button>
         <Listbox.Options className={s.listOptions}>
           {values.map((value) => (
-            <Listbox.Option
-              key={value}
-              className={s.option}
-              value={value}
-            >
+            <Listbox.Option key={value} className={s.option} value={value}>
               {selectedValue === value ? (
                 <span className={s.checkIcon}>
                   <CheckIcon />

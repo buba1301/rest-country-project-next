@@ -1,6 +1,6 @@
 import React from 'react';
 
-import s from '../styles/CountryInfo.module.scss';
+import s from '../../styles/CountryInfo.module.scss';
 import CustomLink from '../CustomLink';
 
 export default function CountryInfo({ infoList, borders, name }) {

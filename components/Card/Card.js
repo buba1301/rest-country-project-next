@@ -1,24 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
 
-import s from '../styles/Card.module.scss';
+import s from '../../styles/Card.module.scss';
 
-export default function Card({
-  name,
-  population,
-  region,
-  capital,
-  flag,
-}) {
+export default function Card({ name, population, region, capital, flag }) {
   return (
     <div className={s.card} key={name}>
-      <Image
-        className={s.img}
-        src={flag}
-        height={159}
-        width={280}
-        alt='Flag image'
-      />
+      <Image className={s.img} src={flag} height={159} width={280} alt="Flag image" />
 
       <div className={s.info}>
         <h2 className={s.name}>{name}</h2>

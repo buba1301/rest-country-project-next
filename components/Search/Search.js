@@ -1,7 +1,7 @@
 import React from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 
-import s from '../styles/Search.module.scss';
+import s from '../../styles/Search.module.scss';
 
 export default function Search({ value, onChange }) {
   return (

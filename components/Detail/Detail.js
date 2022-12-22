@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 import Container from '../../containers/Container';
 
-import s from '../styles/Detail.module.scss';
+import s from '../../styles/Detail.module.scss';
 
 import { getInfoList } from '../../utils';
 import CustomLink from '../CustomLink';
