@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { SearchAndFiltersContext } from '../context/context';
 import { numberWithCommas, transformData } from '../utils';
 
-import Card from '../components/Card';
+import Card from '../components/Card/Card';
 import Button from '../components/Button/Button';
 import Container from './Container';
 
