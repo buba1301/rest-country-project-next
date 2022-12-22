@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MoonIcon } from '@heroicons/react/24/outline';
-import useTheme from '../hooks/useTheme';
+import useTheme from '../../hooks/useTheme';
 
 import s from '../styles/Header.module.scss';
 
