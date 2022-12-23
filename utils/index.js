@@ -8,12 +8,8 @@ export function getInfoList(countryData) {
     Population: numberWithCommas(countryData?.population),
     Region: countryData?.region,
     Subregion: countryData?.subregion,
-    Capital: countryData?.capital
-      ? countryData?.capital[0]
-      : 'no capital',
-    Currencies: countryData?.currencies
-      ? Object.keys(countryData?.currencies)[0]
-      : 'no currencies',
+    Capital: countryData?.capital ? countryData?.capital[0] : 'no capital',
+    Currencies: countryData?.currencies ? Object.keys(countryData?.currencies)[0] : 'no currencies',
   };
 }
 
@@ -22,9 +18,7 @@ const searchData = (data, query) => {
     return data;
   }
 
-  return data.filter(({ name }) =>
-    name.common.toLowerCase().startsWith(query)
-  );
+  return data.filter(({ name }) => name.common.toLowerCase().startsWith(query));
 };
 
 const filterData = (data, query) => {
@@ -32,13 +26,21 @@ const filterData = (data, query) => {
     return data;
   }
 
-  return data.filter(
-    ({ region }) => region.toLowerCase() === query.toLowerCase()
-  );
+  return data.filter(({ region }) => region.toLowerCase() === query.toLowerCase());
 };
 
-const getValueFromCounrty = (country, query) =>
-  query === 'name' ? country[query].common : country[query];
+/*const getValueFromCounrty = (country, query) =>
+  query === 'name' ? country[query].common : country[query];*/
+
+const getValueFromCounrty = {
+  name: (data) => data.name.common,
+  population: (data) => data.population,
+};
+
+const sortCodition = {
+  name: (val1, val2) => val1 > val2,
+  population: (val1, val2) => val1 < val2,
+};
 
 const sortData = (data, query) => {
   if (!query) {
@@ -52,19 +54,17 @@ const sortData = (data, query) => {
       const country1 = copyData[i];
       const country2 = copyData[i + 1];
 
-      const value1 = getValueFromCounrty(
-        country1,
-        query.toLowerCase()
-      );
-      const value2 = getValueFromCounrty(
-        country2,
-        query.toLowerCase()
-      );
+      // const value1 = getValueFromCounrty(country1, query.toLowerCase());
+      // const value2 = getValueFromCounrty(country2, query.toLowerCase());
 
-      const isTrue =
-        query.toLowerCase() === 'name'
-          ? value1 > value2
-          : value1 < value2;
+      const sortType = query.toLowerCase();
+
+      const value1 = getValueFromCounrty[sortType](country1);
+      const value2 = getValueFromCounrty[sortType](country2);
+
+      // const isTrue = query.toLowerCase() === 'name' ? value1 > value2 : value1 < value2;
+
+      const isTrue = sortCodition[sortType](value1, value2);
 
       if (isTrue) {
         copyData[i] = country2;
